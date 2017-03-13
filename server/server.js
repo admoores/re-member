@@ -1,5 +1,5 @@
 var app = require('./app.js');
-var db = requre('./dbinit')
+var db = require('./dbinit')
 
 var port = 80;
 
