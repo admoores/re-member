@@ -6,7 +6,7 @@ var sequelize = new Sequelize('remember', 'root', '4vxjvEo7t##UXVcm', {dialect: 
 var initTables = function() {
   var Category = sequelize.define('Category', {
     id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
-    name: {type: Sequalize.STRING, unique: true}
+    name: {type: Sequelize.STRING, unique: true}
   });
 
   var Resource = sequelize.define('Resource', {
