@@ -28,7 +28,7 @@ var initTables = function() {
   })
 };
 
-sequalize.authenticate().complete(function(err) {
+sequelize.authenticate().complete(function(err) {
   if(err) {
     console.log('SQL authenticate error:', err);
   } else {
