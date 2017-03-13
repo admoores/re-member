@@ -1,0 +1,23 @@
+{
+  "name": "re-member",
+  "version": "1.0.0",
+  "description": "A storage utility for resources",
+  "main": "server/server.js",
+  "dependencies": {
+    "express": "^4.15.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/admoores/re-member.git"
+  },
+  "author": "Alex Moores",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/admoores/re-member/issues"
+  },
+  "homepage": "https://github.com/admoores/re-member#readme"
+}
