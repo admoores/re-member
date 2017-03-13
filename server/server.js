@@ -6,7 +6,8 @@ var app = express();
 
 app.get('/', function(req, res) {
   console.log('heard a GET request');
-  res.sendFile(path.resolve('client/index.html'));
+  console.log(path.resolve('client/index.html'));
+  // res.sendFile(path.resolve('client/index.html'));
   res.end();
 });
 
