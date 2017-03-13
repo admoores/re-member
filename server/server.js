@@ -3,6 +3,7 @@ var app = express();
 
 app.get('/', function(req, res) {
   console.log('heard a GET request');
+  res.sendFile('../client/index.html', {root: __dirname});
   res.end();
 });
 
