@@ -1,6 +1,6 @@
 var Sequelize = require('sequelize');
 
-var sequelize = new Sequelize('remember', 'root', '4vxjvEo7t##UXVcm', {dialect: mysql});
+var sequelize = new Sequelize('remember', 'root', '4vxjvEo7t##UXVcm', {dialect: 'mysql'});
 
 
 var initTables = function() {
