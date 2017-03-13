@@ -1,17 +1,8 @@
-var express = require('express');
-var path = require('path');
+var app = require('./app.js');
 
+var port = 80;
 
-var app = express();
-
-app.use(express.static(path.resolve('client')));
-
-// app.get('/', function(req, res) {
-//   console.log('heard a GET request');
-//   res.sendFile(path.resolve('client/index.html'));
-//   // res.end();
-// });
-
-app.listen(80, function() {
-  console.log('listening on port 80');
+app.listen(port, function() {
+  console.log('server initialized.');
+  console.log('listening on port', port);
 });
