@@ -1,9 +1,12 @@
 var express = require('express');
+var path = require('path');
+
+
 var app = express();
 
 app.get('/', function(req, res) {
   console.log('heard a GET request');
-  res.sendFile('../client/index.html', {root: __dirname});
+  res.sendFile(path.resolve('../client/index.html'));
   res.end();
 });
 
