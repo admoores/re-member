@@ -19,6 +19,14 @@ var initTables = function() {
 
   Category.hasMany(Resource);
   Resource.belongsTo(Category);
+
+  sequelize.sync({force: true}).complete(function(err) {
+    if (err) {
+      console.log('Create Table Error:', err)
+    } else {
+      console.log('tables created successfully');
+    }
+  })
 };
 
 sequalize.authenticate().complete(function(err) {
@@ -29,3 +37,5 @@ sequalize.authenticate().complete(function(err) {
     initTables();
   }
 });
+
+module.exports = sequelize;
