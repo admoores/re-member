@@ -13,7 +13,7 @@ var initTables = function() {
     id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
     title: {type: Sequelize.STRING},
     description: {type: Sequelize.STRING},
-    DateCreated: {type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.NOW}
+    DateCreated: {type: Sequelize.DATE, allowNull: false, defaultValue: Sequelize.NOW}
   });
 
   Category.hasMany(Resource);
