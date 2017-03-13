@@ -19,7 +19,7 @@ var initTables = function() {
   Category.hasMany(Resource);
   Resource.belongsTo(Category);
 
-  sequelize.sync({force: true}).complete(function(err) {
+  sequelize.sync({force: true}).then(function(err) {
     if (err) {
       console.log('Create Table Error:', err)
     } else {
@@ -28,7 +28,7 @@ var initTables = function() {
   })
 };
 
-sequelize.authenticate().complete(function(err) {
+sequelize.authenticate().then(function(err) {
   if(err) {
     console.log('SQL authenticate error:', err);
   } else {
