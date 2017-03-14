@@ -30,11 +30,6 @@ angular.module('remember.resources', [])
     }
   }
 
-  $scope.testUserAuth = function() {
-    var user = {name: 'admin', password: 'super secure'};
-    Resources.testUserAuth(user);
-  };
-
   Resources.getAll().then(function(resources) {
     $scope.data = resources;
     $scope.initFilter();

@@ -13,17 +13,8 @@ angular.module('remember.services', [])
     })
   };
 
-  var testUserAuth = function(user) {
-    return $http({
-      method: 'POST',
-      url: '/api/auth',
-      data: {user: user}
-    })
-  };
-
   return {
-    getAll: getAll,
-    testUserAuth: testUserAuth
+    getAll: getAll
   };
 })
 
@@ -39,4 +30,21 @@ angular.module('remember.services', [])
   return {
     addNew: addNew
   };
+})
+
+.factory('Auth', function($http) {
+  var attemptAuth = function(user) {
+    $http({
+      method: 'POST',
+      url: '/api/auth',
+      data: {user: user}
+    }).then(function(res) {
+      return res.data.token;
+    });
+  }
+
+  return {
+    attemptAuth: attemptAuth
+  };
+
 });
