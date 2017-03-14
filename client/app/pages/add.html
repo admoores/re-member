@@ -2,6 +2,12 @@
 
 <a href="/#/resources">View your Resources</a>
 
+<form>
+  <p ng-repeat="category in data.categories" >
+    <input type="checkbox" name="category" value="{{category.name}}"> {{category.name}}
+  </p>
+</form>
+
 <form ng-submit="isValidInput && addResource()">
   <p>
     Title: <input type="text" ng-change="validate()" ng-model="newResource.title"/>
