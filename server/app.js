@@ -34,7 +34,6 @@ app.post('/api/resources', function(req, res) {
   // var user jwt.decode(token, 'the secretest');
   var user = req.body.user;
   var userId;
-
   db.User.find({where: {name: user.name}}).then(function(currentUser) {
     if (!currentUser) {
       res.status(401);

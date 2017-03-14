@@ -46,10 +46,10 @@ angular.module('remember.add', [])
 
   $scope.addDummyResources = function() {
     var userobj = {name: 'admin'};
-    var obj1 = {title: 'Google', category: 'stuff', link: 'http://www.google.com', description: 'This page has stuff', user: user};
-    var obj2 = {title: 'Facebook', category: 'otherstuff', link: 'http://www.facebook.com', description: 'This page has friends', user: user};
-    var obj3 = {title: 'Youtube', category: 'funstuff', link: 'http://www.youtube.com', description: 'This page has videos', user: user};
-    var obj4 = {title: 'Bing', category: 'uselessstuff', link: 'http://www.bing.com', description: 'This page has useless stuff', user: user};
+    var obj1 = {title: 'Google', category: 'stuff', link: 'http://www.google.com', description: 'This page has stuff', user: userobj};
+    var obj2 = {title: 'Facebook', category: 'otherstuff', link: 'http://www.facebook.com', description: 'This page has friends', user: userobj};
+    var obj3 = {title: 'Youtube', category: 'funstuff', link: 'http://www.youtube.com', description: 'This page has videos', user: userobj};
+    var obj4 = {title: 'Bing', category: 'uselessstuff', link: 'http://www.bing.com', description: 'This page has useless stuff', user: userobj};
     Add.addNew(obj1);
     Add.addNew(obj2);
     Add.addNew(obj3);
