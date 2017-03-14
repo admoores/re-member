@@ -26,7 +26,20 @@ app.get('/api/resources', function(req, res) {
 });
 
 app.post('/api/resources', function(req, res) {
-  console.log(req.body);
+  db.Category.findOne({category: req.body.category}).then(function(currentCategory) {
+    if (!currentCategory) {
+      return db.Category.create({category: req.body.category});
+    }
+    resolve(currentCategory);
+  })
+  .then(function(currentCategory) {
+    db.Resource.create({
+      title: req.body.title,
+      link: req.body.link,
+      description: req.body.description,
+      categoryId: currentCategory.id
+    });
+  })
 });
 
 module.exports = {
