@@ -21,14 +21,7 @@ var initTables = function() {
   sequelize.sync({force: true}).then(function() {
     Category.create({name: 'funstuff'}).then(function() {
       Category.find({where: {name: 'otherstuff'}}).then(function(currentCategory) {
-        if (currentCategory) {
-          Resource.create({
-            title: 'Fun Stuff Article',
-            link: 'http://www.funstuff.com/article',
-            description: 'This article has fun stuff!',
-            categoryId: currentCategory.id
-          });
-        } else {
+        if (!currentCategory) {
           Category.create({name: 'funstuff'}).then(function(currentCategory) {
             Resource.create({
               title: 'Fun Stuff Article',
@@ -36,6 +29,13 @@ var initTables = function() {
               description: 'This article has fun stuff!',
               categoryId: currentCategory.id
             });
+          });
+        } else {
+          Resource.create({
+            title: 'Fun Stuff Article',
+            link: 'http://www.funstuff.com/article',
+            description: 'This article has fun stuff!',
+            categoryId: currentCategory.id
           });
         }
       });
