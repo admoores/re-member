@@ -15,4 +15,8 @@ angular.module('remember.resources', [])
       }
     }
   }
+
+  $scope.hasResources = function() {
+    return $scope.data.resources.length !== 0;
+  }
 });
