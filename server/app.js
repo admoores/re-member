@@ -12,14 +12,16 @@ app.get('/api/resources', function(req, res) {
   var fullList;
   var getCategories = db.Category.findAll().then(function(categoryList) {
     fullList.categories = categoryList;
+    console.log(fullList);
   });
   var getResources = db.Resource.findAll().then(function(resourceList) {
     fullList.resources = resourceList;
+    console.log(fullList);
   });
   Promise.all([getCategories, getResources]).then(function() {
     res.json(fullList);
     res.end();
-  })
+  });
 });
 
 module.exports = {
