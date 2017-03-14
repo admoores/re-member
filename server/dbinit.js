@@ -15,7 +15,7 @@ var Resource = sequelize.define('Resource', {
   DateCreated: {type: Sequelize.DATE, allowNull: false, defaultValue: Sequelize.NOW}
 });
 
-var testTable = sequelize.define('name-of-test-table', {
+var testTable = sequelize.define('asdf', {
   something: Sequelize.STRING
 });
 
