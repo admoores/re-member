@@ -4,6 +4,8 @@ angular.module('remember.resources', [])
 
 .controller('ResourceController', function ($scope, Resources) {
   $scope.data = {};
+  $scope.searchField = '';
+
   Resources.getAll().then(function(resources) {
     $scope.data = resources;
   });
