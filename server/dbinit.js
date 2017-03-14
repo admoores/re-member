@@ -8,7 +8,7 @@ var Category = sequelize.define('category', {
 }, {timestamps: false, freezeTableName: true, tableName: 'categories'});
 
 var Resource = sequelize.define('resource', {
-  id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
+  resourceId: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
   title: {type: Sequelize.STRING},
   link: {type: Sequelize.STRING},
   description: {type: Sequelize.STRING},
