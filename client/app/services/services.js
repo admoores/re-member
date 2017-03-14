@@ -13,7 +13,7 @@ angular.module('remember.services', [])
     })
   };
 
-  var testUserAuth = function(user, $http) {
+  var testUserAuth = function(user) {
     return $http({
       method: 'POST',
       url: '/api/auth',
@@ -22,7 +22,7 @@ angular.module('remember.services', [])
   };
 
   return {
-    getAll: getAll
+    getAll: getAll,
     testUserAuth: testUserAuth
   };
 })
