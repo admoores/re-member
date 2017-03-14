@@ -26,7 +26,7 @@ app.get('/api/resources', function(req, res) {
 });
 
 app.post('/api/resources', function(req, res) {
-  console.log(req.body);
+  console.log(req);
 });
 
 module.exports = {
