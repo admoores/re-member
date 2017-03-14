@@ -7,9 +7,6 @@ angular.module('remember.resources', [])
   $scope.searchField = '';
   $scope.filter = {};
 
-  Resources.getAll().then(function(resources) {
-    $scope.data = resources;
-  });
 
   $scope.findCategoryById = function(id) {
     for (var item of $scope.data.categories) {
@@ -27,4 +24,14 @@ angular.module('remember.resources', [])
     return $scope.data.resources.length !== 0;
   }
 
+  $scope.initFilter = function() {
+    for (var item of $scope.data.categories) {
+      $scope.filter[item] = true;
+    }
+  }
+
+  Resources.getAll().then(function(resources) {
+    $scope.data = resources;
+    $scope.initFilter();
+  });
 });
