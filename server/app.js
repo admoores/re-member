@@ -23,27 +23,35 @@ app.get('/api/resources', function(req, res) {
       reject();
     } else {
       user = jwt.decode(token, 'the secretest');
-      userId = user.id;
       resolve();
     }
   }).then(function() {
     db.User.find({where: {name: user.name}}).then(function(currentUser) {
       if (!currentUser) {
         res.status(401);
-        res.end();
+        res.end('User not found');
       } else {
-        var fullList = {};
-        var getCategories = db.Category.findAll({where: {userId: userId}}).then(function(categoryList) {
-          fullList.categories = categoryList;
-        });
-        var getResources = db.Resource.findAll({where: {userId: userId}}).then(function(resourceList) {
-          fullList.resources = resourceList;
-        });
-        Promise.all([getCategories, getResources]).then(function() {
-          res.json(fullList);
-          res.end();
-        });
+        userId = currentUser.id;
       }
+    }).then(function() {
+      db.User.find({where: {name: user.name}}).then(function(currentUser) {
+        if (!currentUser) {
+          res.status(401);
+          res.end();
+        } else {
+          var fullList = {};
+          var getCategories = db.Category.findAll({where: {userId: userId}}).then(function(categoryList) {
+            fullList.categories = categoryList;
+          });
+          var getResources = db.Resource.findAll({where: {userId: userId}}).then(function(resourceList) {
+            fullList.resources = resourceList;
+          });
+          Promise.all([getCategories, getResources]).then(function() {
+            res.json(fullList);
+            res.end();
+          });
+        }
+      });
     });
   });
 });
@@ -84,7 +92,6 @@ app.post('/api/resources', function(req, res) {
       reject();
     } else {
       user = jwt.decode(token, 'the secretest');
-      userId = user.id;
       resolve();
     }
   }).then(function() {
