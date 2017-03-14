@@ -19,7 +19,7 @@ var initTables = function() {
   Category.hasMany(Resource);
   Resource.belongsTo(Category);
 
-  sequelize.sync({force: true}).then(function(err) {
+  sequelize.sync().then(function(err) {
     if (err) {
       console.log('Create Table Error:', err)
     } else {
@@ -37,4 +37,7 @@ sequelize.authenticate().then(function(err) {
   }
 });
 
-module.exports = sequelize;
+module.exports = {
+  categories: Category,
+  resources: Resource
+};
