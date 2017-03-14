@@ -7,7 +7,9 @@
       <input type="checkbox" name="category" ng-model="filter[category.name]" value="{{category.name}}" ng-change="updateFilter()" checked> {{category.name}}
     </p>
   </form>
-  <input type="text" ng-model="searchField"/>
+  </br>
+  Search: <input type="text" columns="128" ng-model="searchField"/>
+  </br></br></br>
   <div class="resourceDiv" ng-repeat="resource in data.resources | filter: searchField" ng-show="hasResources() && filter[findCategoryById(resource.categoryId)]">
     <a href="resource.link">{{ resource.title }}</a>
     <p> Description: {{ resource.description }} </p>
