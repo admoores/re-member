@@ -12,7 +12,7 @@ var Resource = sequelize.define('resource', {
   title: {type: Sequelize.STRING},
   link: {type: Sequelize.STRING},
   description: {type: Sequelize.STRING},
-  categoryId: Sequelize.INTEGER;
+  categoryId: Sequelize.INTEGER
 }, {timestamps: true, freezeTableName: true, tableName: 'resources'});
 
 Category.hasMany(Resource, {foreignKey: 'id'});
