@@ -20,7 +20,7 @@ angular.module('remember.services', [])
 
 .factory('Add', function($http) {
   var addNew = function(resource) {
-    $http({
+    return $http({
       method: 'POST',
       url: '/api/resources',
       data: resource
@@ -34,7 +34,7 @@ angular.module('remember.services', [])
 
 .factory('Auth', function($http) {
   var attemptAuth = function(user) {
-    $http({
+    return $http({
       method: 'POST',
       url: '/api/auth',
       data: {user: user}
