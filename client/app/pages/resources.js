@@ -1,3 +1,5 @@
+console.log('loaded resources.js');
+
 angular.module('remember.resources', [])
 
 .controller('ResourcesController', function ($scope, Resources) {
