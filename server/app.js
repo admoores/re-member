@@ -27,7 +27,7 @@ app.get('/api/resources', function(req, res) {
 
 app.post('/api/resources', function(req, res) {
   console.log(req.body);
-  db.Category.findOne({name: req.body.category}).then(function(currentCategory) {
+  db.Category.find({where: {name: req.body.category}}).then(function(currentCategory) {
     if (!currentCategory) {
       return db.Category.create({name: req.body.category});
     }
