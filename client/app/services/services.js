@@ -17,7 +17,7 @@ angular.module('remember.services', [])
     return $http({
       method: 'POST',
       url: '/api/auth',
-      data: user
+      data: {user: user}
     })
   };
 
