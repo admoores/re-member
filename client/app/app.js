@@ -44,7 +44,7 @@ angular.module('remember', [
   };
   return attach;
 })
-.run(function($rootScope, $locaiton, $window) {
+.run(function($rootScope, $location, $window) {
   $rootScope.on('$routeChangeStart', function(evt, next, current) {
     var hasToken = !!$window.localStorage.getItem('com.remember');
     if (!hasToken && next.$$route && next.$$route.auth) {
