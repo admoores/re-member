@@ -31,7 +31,9 @@ app.post('/api/resources', function(req, res) {
     if (!currentCategory) {
       return db.Category.create({name: req.body.category});
     }
-    // resolve(currentCategory);
+    return new Promise(function(resolve) {
+      resolve(currentCategory);
+    })
   })
   .then(function(currentCategory) {
     db.Resource.create({
