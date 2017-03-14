@@ -1,3 +1,6 @@
+console.log('loaded app.js');
+
+
 angular.module('remember', [
   'remember.services',
   'remember.resources',

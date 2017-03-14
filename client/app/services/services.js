@@ -1,3 +1,6 @@
+console.log('loaded services.js');
+
+
 angular.module('remember.services', [])
 
 .factory('Resources', function($http) {

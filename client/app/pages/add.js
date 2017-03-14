@@ -1,3 +1,5 @@
+console.log('loaded add.js');
+
 angular.module('remember.add', [])
 
 .controller('AddController', function ($scope, Add) {
