@@ -13,8 +13,17 @@ angular.module('remember.services', [])
     })
   };
 
+  var testUserAuth = function(user) {
+    return $http({
+      method: 'POST',
+      url: '/api/auth',
+      data: user
+    })
+  };
+
   return {
     getAll: getAll
+    testUserAuth: testUserAuth
   };
 })
 
