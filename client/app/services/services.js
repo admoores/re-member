@@ -11,7 +11,11 @@ angular.module('remember.services', [])
     }).then(function(res) {
       return res.data;
     })
-  }
+  };
+
+  return {
+    getAll: getAll
+  };
 })
 
 .factory('Add', function($http) {
