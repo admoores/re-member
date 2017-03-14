@@ -139,6 +139,7 @@ app.post('/api/auth', function(req, res) {
       return db.User.create({name: user.name, hash: bcrypt.hashSync(user.password)});
     } else {
       var auth = bcrypt.compareSync(user.password, currentUser.hash);
+      console.log('AUTHENTICATED:', auth);
       if (auth) {
         return new Promise(function(reslove, reject) {
           resolve(currentUser);
