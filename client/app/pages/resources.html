@@ -2,6 +2,11 @@
 <div id='test'>
   <a href="/#/add">Add a Resource</a>
   </br></br></br>
+  <form>
+    <p ng-repeat="category in data.categories" >
+      <input type="checkbox" name="category" value="{{category.name}}"> {{category.name}}
+    </p>
+  </form>
   <input type="text" ng-model="searchField"/>
   <div class="resourceDiv" ng-repeat="resource in data.resources | filter: searchField" ng-show="hasResources()">
     <a href="resource.link">{{ resource.title }}</a>
