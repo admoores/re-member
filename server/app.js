@@ -13,15 +13,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/api/resources', function(req, res) {
-  var token = req.headers['x-access-token'];
-  if (!token) {
-    res.status(401);
-    res.end('Invalid User Token');
-  }
-  var user = jwt.decode(token, 'the secretest');
-  var userId;
+  // var token = req.headers['x-access-token'];
+  // if (!token) {
+  //   res.status(401);
+  //   res.end('Invalid User Token');
+  // }
+  // var user = jwt.decode(token, 'the secretest');
+  // var userId;
 
-  db.User.find({where: {name: user.name}}).then(function(currentUser) {
+  // db.User.find({where: {name: user.name}}).then(function(currentUser) {
     if (!currentUser) {
       res.status(401);
       res.end();
@@ -38,7 +38,7 @@ app.get('/api/resources', function(req, res) {
         res.end();
       });
     }
-  });
+  // });
 });
 
 app.post('/api/resources', function(req, res) {
