@@ -48,48 +48,54 @@ app.get('/api/resources', function(req, res) {
 });
 
 app.post('/api/resources', function(req, res) {
-  // var token = req.headers['x-access-token'];
-  // if (!token) {
-  //   res.status(401);
-  //   res.end('Invalid User Token');
-  // }
-  // var user = jwt.decode(token, 'the secretest');
-  var user = req.body.user;
+  var token = req.headers['x-access-token'];
+  var user;
   var userId;
-  db.User.find({where: {name: user.name}}).then(function(currentUser) {
-    if (!currentUser) {
+  var tokenCheck = new Promise(function(resolve, reject) {
+    if (!token) {
       res.status(401);
-      res.end('User not found');
+      res.end('Invalid User Token');
+      reject();
     } else {
-      userId = currentUser.id;
+      user = jwt.decode(token, 'the secretest');
+      resolve();
     }
   }).then(function() {
-    db.Category.find({where: {name: req.body.category}}).then(function(currentCategory) {
-      if (currentCategory === null) {
-        return db.Category.create({name: req.body.category, userId: userId});
+    db.User.find({where: {name: user.name}}).then(function(currentUser) {
+      if (!currentUser) {
+        res.status(401);
+        res.end('User not found');
       } else {
-        return new Promise(function(resolve) {
-          resolve(currentCategory);
-        });
+        userId = currentUser.id;
       }
-    })
-    .then(function(currentCategory) {
-      return db.Resource.create({
-        title: req.body.title,
-        link: req.body.link,
-        description: req.body.description,
-        categoryId: currentCategory.id,
-        userId: userId
+    }).then(function() {
+      db.Category.find({where: {name: req.body.category}}).then(function(currentCategory) {
+        if (currentCategory === null) {
+          return db.Category.create({name: req.body.category, userId: userId});
+        } else {
+          return new Promise(function(resolve) {
+            resolve(currentCategory);
+          });
+        }
+      })
+      .then(function(currentCategory) {
+        return db.Resource.create({
+          title: req.body.title,
+          link: req.body.link,
+          description: req.body.description,
+          categoryId: currentCategory.id,
+          userId: userId
+        });
+      })
+      .then(function(newResource) {
+        res.json(newResource);
+        res.end();
+      }).catch(function(e) {
+        res.status(500);
+        res.end('Database confused. Please try again');
       });
     })
-    .then(function(newResource) {
-      res.json(newResource);
-      res.end();
-    }).catch(function(e) {
-      res.status(500);
-      res.end('Database confused. Please try again');
-    });
-  })
+  });
 });
 
 app.post('/api/auth', function(req, res) {
