@@ -38,4 +38,7 @@ angular.module('remember.add', [])
     Add.addNew($scope.newResource);
   }
 
+
+
+  $scope.validate();
 });
