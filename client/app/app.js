@@ -20,5 +20,4 @@ angular.module('remember', [
     .otherwise({
       redirectTo: '/resources'
     });
-  $httpProvider.interceptors.push('AttachTokens');
 });
