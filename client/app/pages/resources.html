@@ -1,7 +1,7 @@
 
 <div id='test'>
   <a href="/#/add">Add a Resource</a>
-  <p ng-repeat="resource in data.resources">
+  <p ng-repeat="resource in data.resources" ng-show="data.resources.length !== 0">
     <a href="resource.link">{{ resource.title }}</a>
     <p> Description: {{ resource.description }} </p>
     <p> Category: {{ getCategoryById(resource.categoryId) }} </p>
