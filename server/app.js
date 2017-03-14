@@ -23,6 +23,7 @@ app.get('/api/resources', function(req, res) {
       reject();
     } else {
       user = jwt.decode(token, 'the secretest');
+      userId = user.id;
       resolve();
     }
   }).then(function() {
@@ -83,6 +84,7 @@ app.post('/api/resources', function(req, res) {
       reject();
     } else {
       user = jwt.decode(token, 'the secretest');
+      userId = user.id;
       resolve();
     }
   }).then(function() {
