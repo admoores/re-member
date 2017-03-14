@@ -32,4 +32,6 @@ angular.module('remember.resources', [])
       $scope.filter[item] = true;
     }
   }
+
+  $scope.initFilter();
 });
