@@ -13,7 +13,7 @@ angular.module('remember', [
       templateUrl: 'app/pages/resources.html',
       controller: 'ResourceController'
     })
-    .when('/signup', {
+    .when('/add', {
       templateUrl: 'app/pages/add.html',
       controller: 'AddController'
     })
