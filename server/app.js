@@ -18,7 +18,7 @@ app.get('/api/resources', function(req, res) {
     res.status(401);
     res.end('Invalid User Token');
   }
-  var user jwt.decode(token, 'the secretest');
+  var user = jwt.decode(token, 'the secretest');
   // var user = req.body.user;
   var userId;
 
@@ -48,7 +48,7 @@ app.post('/api/resources', function(req, res) {
   //   res.status(401);
   //   res.end('Invalid User Token');
   // }
-  // var user jwt.decode(token, 'the secretest');
+  // var user = jwt.decode(token, 'the secretest');
   var user = req.body.user;
   var userId;
   db.User.find({where: {name: user.name}}).then(function(currentUser) {
