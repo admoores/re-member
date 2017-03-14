@@ -1,6 +1,6 @@
 var express = require('express');
 var path = require('path');
-var db = require('/dbinit');
+var db = require('./dbinit');
 
 
 var app = express();
