@@ -14,12 +14,12 @@ angular.module('remember.auth', [])
     Auth.attemptAuth($scope.user);
   }
 
-  $scope.validate() = function() {
+  $scope.validate = function() {
     $scope.errorMessage = '';
     if ($scope.user.name === '' || $scope.user.password) {
       $scope.errorMessage = 'Fields cannot be blank!'
       return false;
     }
     return true;
-  }
+  };
 });
