@@ -22,7 +22,7 @@ var initTables = function() {
     Category.create({name: 'funstuff'}).then(function() {
       Category.find({where: {name: 'otherstuff'}}).then(function(currentCategory) {
         if (!currentCategory) {
-          Category.create({name: 'funstuff'}).then(function(currentCategory) {
+          Category.create({name: 'otherstuff'}).then(function(currentCategory) {
             Resource.create({
               title: 'Fun Stuff Article',
               link: 'http://www.funstuff.com/article',
