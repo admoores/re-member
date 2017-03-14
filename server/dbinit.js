@@ -15,7 +15,7 @@ var Resource = sequelize.define('resource', {
 }, {timestamps: true, freezeTableName: true, tableName: 'resources'});
 
 Category.hasMany(Resource, {foreignKey: 'id'});
-Resource.belongsTo(Category, {foriegnKey: 'categoryId'});
+Resource.belongsTo(Category, {foriegnKey: 'categoryId', targetKey: 'id'});
 
 var initTables = function() {
   sequelize.sync({force: true}).then(function() {
