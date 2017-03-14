@@ -9,7 +9,7 @@ app.use(express.static(path.resolve('client')));
 
 app.get('/api/resources', function(req, res) {
   console.log('get to /api/resources');
-  var fullList;
+  var fullList = {};
   var getCategories = db.getAllCategories().then(function(categoryList) {
     console.log('Got Category List!!');
     fullList.categories = categoryList;
