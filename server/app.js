@@ -51,24 +51,24 @@ app.post('/api/resources', function(req, res) {
         });
       }
     })
-  })
-  .then(function(currentCategory) {
-    return db.Resource.create({
-      title: req.body.title,
-      link: req.body.link,
-      description: req.body.description,
-      categoryId: currentCategory.id,
-      userId: userId
+    .then(function(currentCategory) {
+      return db.Resource.create({
+        title: req.body.title,
+        link: req.body.link,
+        description: req.body.description,
+        categoryId: currentCategory.id,
+        userId: userId
+      });
+    })
+    .then(function(newResource) {
+      res.json(newResource);
+      res.end();
+    }).catch(function(e) {
+      res.status(500);
+      console.log(e);
+      res.end('Database confused. Please try again');
     });
   })
-  .then(function(newResource) {
-    res.json(newResource);
-    res.end();
-  }).catch(function(e) {
-    res.status(500);
-    console.log(e);
-    res.end('Database confused. Please try again');
-  });
 });
 
 module.exports = {
