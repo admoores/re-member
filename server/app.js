@@ -66,6 +66,7 @@ app.post('/api/resources', function(req, res) {
     res.end();
   }).catch(function(e) {
     res.status(500);
+    console.log(e);
     res.end('Database confused. Please try again');
   });
 });
