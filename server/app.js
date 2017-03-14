@@ -47,6 +47,31 @@ app.get('/api/resources', function(req, res) {
   });
 });
 
+app.get('/api/userExists', function(req, res) {
+  var token = req.headers['x-access-token'];
+  var user;
+  var userId;
+  var tokenCheck = new Promise(function(resolve, reject) {
+    if (!token) {
+      res.status(401);
+      res.end('Invalid User Token');
+      reject();
+    } else {
+      user = jwt.decode(token, 'the secretest');
+      resolve();
+    }
+  }).then(function() {
+    db.User.find({where: {name: user.name}}).then(function(currentUser) {
+      if (currentUser) {
+        res.json({exists: true});
+      } else {
+        res.json({exists: false});
+      }
+      res.end();
+    });
+  });
+});
+
 app.post('/api/resources', function(req, res) {
   var token = req.headers['x-access-token'];
   var user;

@@ -44,11 +44,21 @@ angular.module('remember', [
   };
   return attach;
 })
-.run(function($rootScope, $location, $window) {
+.run(function($rootScope, $location, $window, $http) {
   $rootScope.$on('$routeChangeStart', function(evt, next, current) {
     var hasToken = !!$window.localStorage.getItem('com.remember');
     if (!hasToken && next.$$route && next.$$route.auth) {
       $location.path('/auth')
+    }
+    if (hasToken) {
+      $http({
+        method: 'GET',
+        url: '/api/userExists'
+      }).then(function(res) {
+        if (!res.data.exists) {
+          $window.localStorage.removeItem('com.remember');
+        }
+      });
     }
   });
 });
