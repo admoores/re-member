@@ -1,4 +1,4 @@
-var app = require('./app.js');
+var app = require('./app');
 var db = require('./dbinit')
 
 var port = 80;

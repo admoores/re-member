@@ -1,36 +1,27 @@
 var Sequelize = require('sequelize');
+var dummyData = require('./dummydata')
 
 var sequelize = new Sequelize('remember', 'root', '4vxjvEo7t##UXVcm', {dialect: 'mysql'});
 
-
-var Category = sequelize.define('Category', {
+var Category = sequelize.define('category', {
   id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
   name: {type: Sequelize.STRING, unique: true}
-});
+}, {timestamps: false, freezeTableName: true, tableName: 'categories'});
 
-var Resource = sequelize.define('Resource', {
+var Resource = sequelize.define('resource', {
   id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
   title: {type: Sequelize.STRING},
+  link: {type: Sequelize.STRING},
   description: {type: Sequelize.STRING},
-  DateCreated: {type: Sequelize.DATE, allowNull: false, defaultValue: Sequelize.NOW}
-});
-
-var testTable = sequelize.define('asdf', {
-  something: Sequelize.STRING
-});
+}, {timestamps: true, freezeTableName: true, tableName: 'resources'});
 
 Category.hasMany(Resource);
 Resource.belongsTo(Category);
 
 var initTables = function() {
-
   sequelize.sync().then(function(err) {
-    if (err) {
-      console.log('Create Table Error:', err)
-    } else {
-      console.log('tables created successfully');
-    }
-  })
+    dummyData();
+  });
 };
 
 sequelize.authenticate().then(function(err) {
@@ -39,11 +30,11 @@ sequelize.authenticate().then(function(err) {
   } else {
     console.log('connected to DB');
     initTables();
-    module.exports = {
-      db: sequelize,
-      categories: Category,
-      resources: Resource
-    };
   }
 });
 
+module.exports = {
+  db: sequelize,
+  Category: Category,
+  Resource: Resource
+};
