@@ -43,6 +43,14 @@ var initTables = function() {
   });
 };
 
+var getAllResources = function() {
+  return Resource.findAll();
+}
+
+var getAllCategories = function() {
+  return Category.findAll();
+}
+
 sequelize.authenticate().then(function(err) {
   if(err) {
     console.log('SQL authenticate error:', err);
@@ -55,5 +63,7 @@ sequelize.authenticate().then(function(err) {
 module.exports = {
   db: sequelize,
   Category: Category,
-  Resource: Resource
+  Resource: Resource,
+  getAllResources: getAllResources,
+  getAllCategories: getAllCategories
 };

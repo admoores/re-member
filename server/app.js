@@ -10,13 +10,12 @@ app.use(express.static(path.resolve('client')));
 app.get('/api/resources', function(req, res) {
   console.log('get to /api/resources');
   var fullList;
-  var getCategories = db.Category.findAll().then(function(categoryList) {
+  var getCategories = db.getAllCategories.then(function(categoryList) {
+    console.log(categoryList);
     fullList.categories = categoryList;
-    console.log(fullList);
   });
-  var getResources = db.Resource.findAll().then(function(resourceList) {
+  var getResources = db.getAllResources.then(function(resourceList) {
     fullList.resources = resourceList;
-    console.log(fullList);
   });
   Promise.all([getCategories, getResources]).then(function() {
     res.json(fullList);
