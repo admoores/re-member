@@ -8,6 +8,7 @@ var app = express();
 
 app.use(express.static(path.resolve('client')));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/api/resources', function(req, res) {
   console.log('get to /api/resources');
