@@ -1,5 +1,9 @@
-<div id='test'>
-THIS IS THE ADD PAGE
-{{test}}
-{{test2}}
+<div id="test">
+<form ng-submit="isValidInput && addResource()">
+  Title: <input type="text" ng-change="validate()" ng-model="newResource.title"/>
+  Link: <input type="text" ng-change="validate()" ng-model="newResource.link"/>
+  Category: <input type="text" ng-change="validate()" ng-model="newResource.category"/>
+  Description: <textArea rows="4" columns = "64" ng-change="validate()"  ng-model="newResource.description"> </textArea>
+  <p ng-show="!isValidInput" color="red"> {{ errorMessage }} </p>
+</form>
 </div>

@@ -3,10 +3,38 @@ console.log('loaded add.js');
 angular.module('remember.add', [])
 
 .controller('AddController', function ($scope, Add) {
-  var testObj1 = {title: 'This is a new page', link: 'this is a link', description: 'this is a description', category: 'this is a category'};
-  Add.addNew(testObj1);
-  var testObj2 = {title: 'This is another new page', link: 'this is another link', description: 'this is another description', category: 'funstuff'};
-  Add.addNew(testObj2);
-  var testObj3 = {title: 'This is a third new page', link: 'this is a third link', description: 'this is a third description', category: 'funstuff'};
-  Add.addNew(testObj3);
+  $scope.newResource = {
+    title: '',
+    link: '',
+    category: '',
+    description: ''
+  }
+  $scope.isValidInput = false;
+  $scope.errorMessage = '';
+
+  $scope.validate() = function() {
+    $scope.errorMessage = '';
+    if ($scope.newResource.title === '') {
+      $scope.errorMessage += 'Title cannot be blank!\n';
+    }
+    if ($scope.newResource.link === '') {
+      $scope.errorMessage += 'Link cannot be blank!\n';
+    }
+    if ($scope.newResource.description === '') {
+      $scope.errorMessage += 'Description cannot be blank!\n';
+    }
+    if ($scope.newResource.category === '') {
+      $scope.errorMessage += 'Category cannot be blank!\n';
+    }
+    if ($scope.errorMessage !== '') {
+      $scope.isValidInput = false;
+    } else {
+      $scope.isValidInput = true;
+    }
+  }
+
+  $scope.addResource = function() {
+    Add.addNew($scope.newResource);
+  }
+
 });
