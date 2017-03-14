@@ -14,10 +14,15 @@ var Resource = sequelize.define('Resource', {
   description: {type: Sequelize.STRING},
   DateCreated: {type: Sequelize.DATE, allowNull: false, defaultValue: Sequelize.NOW}
 });
-var initTables = function() {
 
-  Category.hasMany(Resource);
-  Resource.belongsTo(Category);
+var testTable = sequelize.define('name-of-test-table', {
+  something: Sequelize.STRING
+});
+
+Category.hasMany(Resource);
+Resource.belongsTo(Category);
+
+var initTables = function() {
 
   sequelize.sync().then(function(err) {
     if (err) {
@@ -34,10 +39,11 @@ sequelize.authenticate().then(function(err) {
   } else {
     console.log('connected to DB');
     initTables();
+    module.exports = {
+      db: sequelize,
+      categories: Category,
+      resources: Resource
+    };
   }
 });
 
-module.exports = {
-  categories: Category,
-  resources: Resource
-};
