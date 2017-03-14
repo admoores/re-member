@@ -19,8 +19,10 @@ Category.hasMany(Resource);
 Resource.belongsTo(Category);
 
 var initTables = function() {
-  sequelize.sync().then(function(err) {
-    dummyData();
+  sequelize.sync().then(function() {
+    Category.create({name: 'funstuff'}).then(function() {
+      Resource.create({title: 'Fun Stuff Article', link: 'http://www.funstuff.com/article', description: 'This article has fun stuff!'});
+    });
   });
 };
 
