@@ -2,7 +2,7 @@ console.log('loaded auth.js');
 
 angular.module('remember.auth', [])
 
-.controller('AuthController', function ($scope, Auth) {
+.controller('AuthController', function ($scope, Auth, $location) {
   $scope.user = {
     name: '',
     password: ''
@@ -13,6 +13,7 @@ angular.module('remember.auth', [])
 
   $scope.attemptAuth = function() {
     Auth.attemptAuth($scope.user);
+    $location.path('/resources');
   }
 
   $scope.validate = function() {
