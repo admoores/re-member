@@ -1,7 +1,11 @@
 
 <div id='test'>
   <a href="/#/add">Add a Resource</a>
+  <p ng-repeat="resource in data.resources">
+    <a href="resource.link">{{ resource.title }}</a>
+    <p> Description: {{ resource.description }} </p>
+    <p> Category: {{ getCategoryById(resource.categoryId) }} </p>
+  </p>
 
-
-{{ data }}
+<!-- {{ data }} -->
 </div>

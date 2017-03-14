@@ -7,4 +7,12 @@ angular.module('remember.resources', [])
   Resources.getAll().then(function(resources) {
     $scope.data = resources;
   });
+
+  $scope.findCategoryById = function(id) {
+    for (var item of $scope.data.categories) {
+      if (item.id === id) {
+        return item.name;
+      }
+    }
+  }
 });
