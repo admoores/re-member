@@ -8,14 +8,14 @@ var Category = sequelize.define('category', {
 }, {timestamps: false, freezeTableName: true, tableName: 'categories'});
 
 var Resource = sequelize.define('resource', {
-  resourceId: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
+  id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
   title: {type: Sequelize.STRING},
   link: {type: Sequelize.STRING},
   description: {type: Sequelize.STRING},
   categoryId: Sequelize.INTEGER
 }, {timestamps: true, freezeTableName: true, tableName: 'resources'});
 
-Category.hasMany(Resource, {foreignKey: 'id'});
+Category.hasMany(Resource, {foreignKey: 'categoryId'});
 Resource.belongsTo(Category, {foriegnKey: 'categoryId', targetKey: 'id'});
 
 var initTables = function() {
