@@ -1,5 +1,4 @@
 var Sequelize = require('sequelize');
-var dummyData = require('./dummydata')
 
 var sequelize = new Sequelize('remember', 'root', '4vxjvEo7t##UXVcm', {dialect: 'mysql'});
 
