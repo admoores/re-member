@@ -1,14 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>re:Member</title>
-</head>
-<body>
-THIS IS A PAGE
-<img src="/img/absurd.jpg"/>
-  <div id="main"></div>
+<html ng-app='shortly'>
+  <head>
+    <meta charset="utf-8" />
+    <title>re:Member</title>
+    <link rel="stylesheet" type="text/css" href="/styles/style.css" />
+  </head>
+  <body>
+    <h1>re:Member</h1>
 
-</body>
+    <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
+    <div ng-view></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.min.js"></script>
+<!--
+    <script src="app/auth/auth.js"></script>
+    <script src="app/links/links.js"></script>
+    <script src="app/shorten/shorten.js"></script>
+    <script src="app/services/services.js"></script>
+    <script src="app/app.js"></script> -->
+  </body>
 </html>
