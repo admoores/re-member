@@ -45,7 +45,7 @@ angular.module('remember.add', [])
   };
 
   $scope.addDummyResources = function() {
-    var userobj = {name: 'admin', hash: 'al;kjsdf'};
+    var userobj = {name: 'admin'};
     var obj1 = {title: 'Google', category: 'stuff', link: 'http://www.google.com', description: 'This page has stuff', user: user};
     var obj2 = {title: 'Facebook', category: 'otherstuff', link: 'http://www.facebook.com', description: 'This page has friends', user: user};
     var obj3 = {title: 'Youtube', category: 'funstuff', link: 'http://www.youtube.com', description: 'This page has videos', user: user};

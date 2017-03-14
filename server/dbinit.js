@@ -21,7 +21,7 @@ var User = sequelize.define('user', {
   id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
   name: {type: Sequelize.STRING, unique: true},
   hash: {type: Sequelize.STRING}
-}, {timestamps: true, freezeTableName: true, tableName: 'users'});
+}, {timestamps: false, freezeTableName: true, tableName: 'users'});
 
 User.hasMany(Category, {foreignKey: 'userId'});
 Category.belongsTo(User, {foreignKey: 'userId', targetKey: 'id'});
