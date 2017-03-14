@@ -5,6 +5,7 @@ angular.module('remember.resources', [])
 .controller('ResourceController', function ($scope, Resources) {
   $scope.data = {};
   $scope.searchField = '';
+  $scope.filter = {};
 
   Resources.getAll().then(function(resources) {
     $scope.data = resources;
@@ -16,6 +17,10 @@ angular.module('remember.resources', [])
         return item.name;
       }
     }
+  }
+
+  $scope.updateFilter = function() {
+    console.log($scope.filter);
   }
 
   $scope.hasResources = function() {
