@@ -19,5 +19,15 @@ angular.module('remember.services', [])
 })
 
 .factory('Add', function($http) {
-  return function() {return 'this is the add response'};
+  var addNew = function(resource) {
+    $http({
+      method: 'POST',
+      url: '/api/resources',
+      data: resource
+    });
+  }
+
+  return {
+    addNew: addNew
+  };
 });
