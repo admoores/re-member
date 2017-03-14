@@ -5,6 +5,7 @@ var sequelize = new Sequelize('remember', 'root', '4vxjvEo7t##UXVcm', {dialect: 
 var Category = sequelize.define('category', {
   id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
   name: {type: Sequelize.STRING, unique: true}
+  userId: Sequelize.INTEGER
 }, {timestamps: false, freezeTableName: true, tableName: 'categories'});
 
 var Resource = sequelize.define('resource', {
@@ -12,8 +13,21 @@ var Resource = sequelize.define('resource', {
   title: {type: Sequelize.STRING},
   link: {type: Sequelize.STRING},
   description: {type: Sequelize.STRING},
-  categoryId: Sequelize.INTEGER
+  categoryId: Sequelize.INTEGER,
+  userId: Sequelize.INTEGER
 }, {timestamps: true, freezeTableName: true, tableName: 'resources'});
+
+var User = sequelize.define('user', {
+  id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
+  name: {type: Sequelize.STRING, unique: true},
+  hash: {type: Sequelize.STRING}
+}, {timestamps: true, freezeTableName: true, tableName: 'users'});
+
+User.hasMany(Category, {foreignKey: 'userId'});
+Category.belongsTo(User, {foreignKey: 'userId', targetKey: 'id'});
+
+User.hasMany(Resource, {foreignKey: 'userId'});
+Resource.belongsTo(User, {foreignKey: 'userId', targetKey: 'id'});
 
 Category.hasMany(Resource, {foreignKey: 'categoryId'});
 Resource.belongsTo(Category, {foriegnKey: 'categoryId', targetKey: 'id'});
@@ -56,5 +70,6 @@ sequelize.authenticate().then(function(err) {
 module.exports = {
   db: sequelize,
   Category: Category,
-  Resource: Resource
+  Resource: Resource,
+  User: User
 };
