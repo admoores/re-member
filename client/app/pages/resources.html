@@ -5,7 +5,7 @@
   <div ng-repeat="resource in data.resources" ng-show="hasResources()">
     <a href="resource.link">{{ resource.title }}</a>
     <p> Description: {{ resource.description }} </p>
-    <p> Category: {{#findCategoryById}}resource.categoryId{{/findCategoryById}} </p>
+    <p> Category: {{findCategoryById(resource.categoryId)}} </p>
   </div>
 
 {{ data }}
