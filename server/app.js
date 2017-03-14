@@ -30,10 +30,11 @@ app.post('/api/resources', function(req, res) {
   db.Category.find({where: {name: req.body.category}}).then(function(currentCategory) {
     if (!currentCategory) {
       return db.Category.create({name: req.body.category});
+    } else {
+      return new Promise(function(resolve) {
+        resolve(currentCategory);
+      })
     }
-    return new Promise(function(resolve) {
-      resolve(currentCategory);
-    })
   })
   .then(function(currentCategory) {
     db.Resource.create({
@@ -42,7 +43,9 @@ app.post('/api/resources', function(req, res) {
       description: req.body.description,
       categoryId: currentCategory.id
     });
-  })
+  });
+
+  res.end();
 });
 
 module.exports = {
