@@ -1,6 +1,6 @@
 
 <div id='test'>
-<form ng-submit="validate() && attemptAuth()">
+<form ng-submit="isValid && attemptAuth()">
   <p>
     Username: <input type="text" ng-change="validate()" ng-model="user.name"/>
   </p>
@@ -11,4 +11,6 @@
     <input type="submit" value="Submit">
   </p>
 </form>
+
+<p ng-show="!isValid" ng-repeat="errorMessage in errorMessages" style="color:red"> {{ errorMessage }} </p>
 </div>
