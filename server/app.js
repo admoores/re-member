@@ -11,7 +11,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/api/resources', function(req, res) {
-  console.log('get to /api/resources');
   var fullList = {};
   var getCategories = db.Category.findAll().then(function(categoryList) {
     fullList.categories = categoryList;
@@ -26,7 +25,6 @@ app.get('/api/resources', function(req, res) {
 });
 
 app.post('/api/resources', function(req, res) {
-  console.log(req.body);
   db.Category.find({where: {name: req.body.category}}).then(function(currentCategory) {
     if (currentCategory === null) {
       return db.Category.create({name: req.body.category});
@@ -37,16 +35,17 @@ app.post('/api/resources', function(req, res) {
     }
   })
   .then(function(currentCategory) {
-    console.log('********************* currentCategory:', currentCategory.dataValues, 'req.body.category', req.body.category);
-    db.Resource.create({
+    return db.Resource.create({
       title: req.body.title,
       link: req.body.link,
       description: req.body.description,
       categoryId: currentCategory.id
     });
+  })
+  .then(function(newResource) {
+    res.json(newResource);
+    res.end();
   });
-
-  res.end();
 });
 
 module.exports = {
