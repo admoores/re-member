@@ -8,7 +8,7 @@
     </p>
   </form>
   <input type="text" ng-model="searchField"/>
-  <div class="resourceDiv" ng-repeat="resource in data.resources | filter: searchField" ng-show="hasResources()">
+  <div class="resourceDiv" ng-repeat="resource in data.resources | filter: searchField" ng-show="hasResources() && filter[findCategoryById(resource.categoryId)]">
     <a href="resource.link">{{ resource.title }}</a>
     <p> Description: {{ resource.description }} </p>
     <p> Category: {{findCategoryById(resource.categoryId)}} </p>

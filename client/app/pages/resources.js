@@ -26,4 +26,10 @@ angular.module('remember.resources', [])
   $scope.hasResources = function() {
     return $scope.data.resources.length !== 0;
   }
+
+  $scope.initFilter = function() {
+    for (var item of $scope.data.categories) {
+      $scope.filter[item] = true;
+    }
+  }
 });
