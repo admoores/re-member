@@ -14,11 +14,11 @@ var Resource = sequelize.define('resource', {
   description: {type: Sequelize.STRING},
 }, {timestamps: true, freezeTableName: true, tableName: 'resources'});
 
-Category.hasMany(Resource, {onDelete: 'CASCADE', onUpdate: 'CASCADE'});
-Resource.belongsTo(Category);
+Category.hasMany(Resource, {foreignKey: 'id'});
+Resource.belongsTo(Category, {foriegnKey: 'categoryId'});
 
 var initTables = function() {
-  sequelize.sync().then(function() {
+  sequelize.sync({force: true}).then(function() {
     Category.create({name: 'funstuff'}).then(function() {
       Resource.create({
         title: 'Fun Stuff Article',
