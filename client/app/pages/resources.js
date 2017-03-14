@@ -9,6 +9,7 @@ angular.module('remember.resources', [])
 
   Resources.getAll().then(function(resources) {
     $scope.data = resources;
+    $scope.initFilter();
   });
 
   $scope.findCategoryById = function(id) {
@@ -33,5 +34,4 @@ angular.module('remember.resources', [])
     }
   }
 
-  $scope.initFilter();
 });
