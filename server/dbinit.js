@@ -3,7 +3,7 @@ var Sequelize = require('sequelize');
 var sequelize = new Sequelize('remember', 'root', '4vxjvEo7t##UXVcm', {dialect: 'mysql'});
 
 var Category = sequelize.define('category', {
-  id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
+  categoryId: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
   name: {type: Sequelize.STRING, unique: true}
 }, {timestamps: false, freezeTableName: true, tableName: 'categories'});
 
@@ -24,7 +24,7 @@ var initTables = function() {
         title: 'Fun Stuff Article',
         link: 'http://www.funstuff.com/article',
         description: 'This article has fun stuff!',
-        category: 'funstuff'
+        categoryId: 'funstuff'
       });
     });
   });
