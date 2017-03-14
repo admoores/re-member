@@ -30,14 +30,14 @@ app.post('/api/resources', function(req, res) {
   db.Category.find({where: {name: req.body.category}}).then(function(currentCategory) {
     if (currentCategory === null) {
       return db.Category.create({name: req.body.category});
-      console.log('********************* currentCategory:', currentCategory, 'req.body.category', req.body.category);
     } else {
       return new Promise(function(resolve) {
         resolve(currentCategory);
-      })
+      });
     }
   })
   .then(function(currentCategory) {
+    console.log('********************* currentCategory:', currentCategory.dataValues, 'req.body.category', req.body.category);
     db.Resource.create({
       title: req.body.title,
       link: req.body.link,
