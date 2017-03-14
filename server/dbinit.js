@@ -20,13 +20,24 @@ Resource.belongsTo(Category, {foriegnKey: 'categoryId', targetKey: 'id'});
 var initTables = function() {
   sequelize.sync({force: true}).then(function() {
     Category.create({name: 'funstuff'}).then(function() {
-      Category.findOrCreate({where: {name: 'otherstuff'}}).then(function(currentCategory) {
-        Resource.create({
-          title: 'Fun Stuff Article',
-          link: 'http://www.funstuff.com/article',
-          description: 'This article has fun stuff!',
-          categoryId: currentCategory.id
-        });
+      Category.find({where: {name: 'otherstuff'}}).then(function(currentCategory) {
+        if (currentCategory) {
+          Resource.create({
+            title: 'Fun Stuff Article',
+            link: 'http://www.funstuff.com/article',
+            description: 'This article has fun stuff!',
+            categoryId: currentCategory.id
+          });
+        } else {
+          Category.create({name: 'funstuff'}).then(function(currentCategory) {
+            Resource.create({
+              title: 'Fun Stuff Article',
+              link: 'http://www.funstuff.com/article',
+              description: 'This article has fun stuff!',
+              categoryId: currentCategory.id
+            });
+          });
+        }
       });
     });
   });
