@@ -2,13 +2,14 @@
 <div id='test'>
   <a href="/#/add">Add a Resource</a>
   </br></br></br>
+  Filter by Category:
   <form>
     <p ng-repeat="category in data.categories" >
       <input type="checkbox" name="category" ng-model="filter[category.name]" value="{{category.name}}" ng-change="updateFilter()" checked> {{category.name}}
     </p>
   </form>
   </br>
-  Search: <input type="text" columns="128" ng-model="searchField"/>
+  Search: <input type="text" ng-model="searchField"/>
   </br></br></br>
   <div class="resourceDiv" ng-repeat="resource in data.resources | filter: searchField" ng-show="hasResources() && filter[findCategoryById(resource.categoryId)]">
     <a href="resource.link">{{ resource.title }}</a>
