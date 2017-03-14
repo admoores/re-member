@@ -3,18 +3,18 @@ var Sequelize = require('sequelize');
 var sequelize = new Sequelize('remember', 'root', '4vxjvEo7t##UXVcm', {dialect: 'mysql'});
 
 
-var initTables = function() {
-  var Category = sequelize.define('Category', {
-    id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
-    name: {type: Sequelize.STRING, unique: true}
-  });
+var Category = sequelize.define('Category', {
+  id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
+  name: {type: Sequelize.STRING, unique: true}
+});
 
-  var Resource = sequelize.define('Resource', {
-    id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
-    title: {type: Sequelize.STRING},
-    description: {type: Sequelize.STRING},
-    DateCreated: {type: Sequelize.DATE, allowNull: false, defaultValue: Sequelize.NOW}
-  });
+var Resource = sequelize.define('Resource', {
+  id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
+  title: {type: Sequelize.STRING},
+  description: {type: Sequelize.STRING},
+  DateCreated: {type: Sequelize.DATE, allowNull: false, defaultValue: Sequelize.NOW}
+});
+var initTables = function() {
 
   Category.hasMany(Resource);
   Resource.belongsTo(Category);
