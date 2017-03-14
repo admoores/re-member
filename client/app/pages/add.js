@@ -12,7 +12,7 @@ angular.module('remember.add', [])
   $scope.isValidInput = false;
   $scope.errorMessage = '';
 
-  $scope.validate() = function() {
+  $scope.validate = function() {
     $scope.errorMessage = '';
     if ($scope.newResource.title === '') {
       $scope.errorMessage += 'Title cannot be blank!\n';
