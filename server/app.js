@@ -32,10 +32,10 @@ app.get('/api/resources', function(req, res) {
         res.end();
       } else {
         var fullList = {};
-        var getCategories = db.Category.findAll().then(function(categoryList) {
+        var getCategories = db.Category.findAll({where: {userId: userId}}).then(function(categoryList) {
           fullList.categories = categoryList;
         });
-        var getResources = db.Resource.findAll().then(function(resourceList) {
+        var getResources = db.Resource.findAll({where: {userId: userId}}).then(function(resourceList) {
           fullList.resources = resourceList;
         });
         Promise.all([getCategories, getResources]).then(function() {
