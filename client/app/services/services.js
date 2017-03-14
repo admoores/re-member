@@ -39,6 +39,7 @@ angular.module('remember.services', [])
       url: '/api/auth',
       data: {user: user}
     }).then(function(res) {
+      console.log(res.data);
       return res.data.token;
     });
   }
