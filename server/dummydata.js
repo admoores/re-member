@@ -1,7 +1,7 @@
 var db = require('./dbinit')
 
 module.exports = function() {
-  var dummyCategory = db.Category.build({name: 'funstuff'}).save();
+  var dummyCategory = db.Category.create({name: 'funstuff'}).save();
   dummyCategory.then(function() {
     db.Resource.create({
       title: 'Fun Stuff Article',
