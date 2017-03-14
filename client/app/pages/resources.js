@@ -31,7 +31,7 @@ angular.module('remember.resources', [])
   }
 
   $scope.testUserAuth = function() {
-    var user = {name: admin, password: 'super secure'};
+    var user = {name: 'admin', password: 'super secure'};
     Resources.testUserAuth(user);
   };
 
