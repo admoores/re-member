@@ -26,7 +26,7 @@ angular.module('remember.resources', [])
 
   $scope.initFilter = function() {
     for (var item of $scope.data.categories) {
-      $scope.filter[item] = true;
+      $scope.filter[item.name] = true;
     }
   }
 
