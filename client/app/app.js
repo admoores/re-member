@@ -48,7 +48,7 @@ angular.module('remember', [
   $rootScope.$on('$routeChangeStart', function(evt, next, current) {
     var hasToken = !!$window.localStorage.getItem('com.remember');
     if (!hasToken && next.$$route && next.$$route.auth) {
-      $location.path('/auth')
+      $location.path('/auth');
     }
     if (hasToken) {
       $http({
@@ -56,6 +56,7 @@ angular.module('remember', [
         url: '/api/userExists'
       }).then(function(res) {
         if (!res.data.exists) {
+          $location.path('/auth');
           $window.localStorage.removeItem('com.remember');
         }
       });
