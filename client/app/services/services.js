@@ -7,7 +7,7 @@ angular.module('remember.services', [])
   var getAll = function() {
     return $http({
       method: 'GET',
-      url: '192.168.1.113:80/api/resources'
+      url: '/api/resources'
     }).then(function(res) {
       return res.data;
     })
