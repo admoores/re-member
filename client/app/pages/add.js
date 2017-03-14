@@ -10,23 +10,23 @@ angular.module('remember.add', [])
     description: ''
   }
   $scope.isValidInput = false;
-  $scope.errorMessage = '';
+  $scope.errorMessages = [];
 
   $scope.validate = function() {
-    $scope.errorMessage = '';
+    $scope.errorMessages = [];
     if ($scope.newResource.title === '') {
-      $scope.errorMessage += 'Title cannot be blank!\n';
+      $scope.errorMessages.push('Title cannot be blank!');
     }
     if ($scope.newResource.link === '') {
-      $scope.errorMessage += 'Link cannot be blank!\n';
+      $scope.errorMessages.push('Link cannot be blank!');
     }
     if ($scope.newResource.description === '') {
-      $scope.errorMessage += 'Description cannot be blank!\n';
+      $scope.errorMessages.push('Description cannot be blank!');
     }
     if ($scope.newResource.category === '') {
-      $scope.errorMessage += 'Category cannot be blank!\n';
+      $scope.errorMessages.push('Category cannot be blank!');
     }
-    if ($scope.errorMessage !== '') {
+    if ($scope.errorMessages.length !== 0) {
       $scope.isValidInput = false;
     } else {
       $scope.isValidInput = true;
