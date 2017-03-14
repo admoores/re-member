@@ -22,10 +22,10 @@ app.get('/api/resources', function(req, res) {
   // var userId;
 
   // db.User.find({where: {name: user.name}}).then(function(currentUser) {
-    if (!currentUser) {
-      res.status(401);
-      res.end();
-    } else {
+    // if (!currentUser) {
+    //   res.status(401);
+    //   res.end();
+    // } else {
       var fullList = {};
       var getCategories = db.Category.findAll().then(function(categoryList) {
         fullList.categories = categoryList;
@@ -37,7 +37,7 @@ app.get('/api/resources', function(req, res) {
         res.json(fullList);
         res.end();
       });
-    }
+    // }
   // });
 });
 
