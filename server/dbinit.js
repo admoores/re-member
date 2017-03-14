@@ -3,7 +3,7 @@ var Sequelize = require('sequelize');
 var sequelize = new Sequelize('remember', 'root', '4vxjvEo7t##UXVcm', {dialect: 'mysql'});
 
 var Category = sequelize.define('category', {
-  categoryId: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
+  id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
   name: {type: Sequelize.STRING, unique: true}
 }, {timestamps: false, freezeTableName: true, tableName: 'categories'});
 
@@ -14,7 +14,7 @@ var Resource = sequelize.define('resource', {
   description: {type: Sequelize.STRING},
 }, {timestamps: true, freezeTableName: true, tableName: 'resources'});
 
-Category.hasMany(Resource);
+Category.hasMany(Resource, {onDelete: 'CASCADE', onUpdate: 'CASCADE'});
 Resource.belongsTo(Category);
 
 var initTables = function() {
