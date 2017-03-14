@@ -17,7 +17,7 @@ angular.module('remember.auth', [])
 
   $scope.validate = function() {
     $scope.errorMessage = '';
-    if ($scope.user.name === '' || $scope.user.password) {
+    if ($scope.user.name === '' || $scope.user.password === '') {
       $scope.errorMessage = 'Fields cannot be blank!'
       $scope.isValid = false;
     } else {
