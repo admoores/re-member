@@ -20,8 +20,8 @@ Resource.belongsTo(Category, {foriegnKey: 'categoryId', targetKey: 'id'});
 var initTables = function() {
   sequelize.sync({force: true}).then(function() {
     Category.create({name: 'funstuff'}).then(function() {
-      Category.find({where: {name: 'otherstuff'}}).then(function(currentCategory, err) {
-        if (err) {
+      Category.find({where: {name: 'otherstuff'}}).then(function(currentCategory) {
+        if (!currentCategory) {
           Category.create().then(function() {
             Resource.create({
               title: 'Fun Stuff Article',
