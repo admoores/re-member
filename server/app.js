@@ -25,7 +25,7 @@ app.get('/api/resources', function(req, res) {
     if (!currentUser) {
       res.status(401);
       res.end();
-    } else
+    } else {
       var fullList = {};
       var getCategories = db.Category.findAll().then(function(categoryList) {
         fullList.categories = categoryList;
