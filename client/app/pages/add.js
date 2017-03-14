@@ -31,7 +31,7 @@ angular.module('remember.add', [])
     } else {
       $scope.isValidInput = true;
     }
-  }
+  };
 
   $scope.addResource = function() {
     console.log('Submitted!!!');
@@ -42,9 +42,18 @@ angular.module('remember.add', [])
       category: '',
       description: ''
     }
-  }
+  };
 
-
+  $scope.addDummyResources = function() {
+    var obj1 = {title: 'Google', category: 'stuff', link: 'http://www.google.com', description: 'This page has stuff'};
+    var obj2 = {title: 'Facebook', category: 'otherstuff', link: 'http://www.facebook.com', description: 'This page has friends'};
+    var obj3 = {title: 'Youtube', category: 'funstuff', link: 'http://www.youtube.com', description: 'This page has videos'};
+    var obj4 = {title: 'Bing', category: 'uselessstuff', link: 'http://www.bing.com', description: 'This page has useless stuff'};
+    Add.addNew(obj1);
+    Add.addNew(obj2);
+    Add.addNew(obj3);
+    Add.addNew(obj4);
+  };
 
   $scope.validate();
 });
