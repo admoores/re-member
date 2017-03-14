@@ -1,16 +1,19 @@
 <div id="test">
 <form ng-submit="isValidInput && addResource()">
   <p>
-  Title: <input type="text" ng-change="validate()" ng-model="newResource.title"/>
+    Title: <input type="text" ng-change="validate()" ng-model="newResource.title"/>
   </p>
   <p>
-  Link: <input type="text" ng-change="validate()" ng-model="newResource.link"/>
+    Link: <input type="text" ng-change="validate()" ng-model="newResource.link"/>
   </p>
   <p>
-  Category: <input type="text" ng-change="validate()" ng-model="newResource.category"/>
+    Category: <input type="text" ng-change="validate()" ng-model="newResource.category"/>
   </p>
   <p>
-  Description: <textArea rows="4" columns = "128" ng-change="validate()"  ng-model="newResource.description"> </textArea>
+    Description: <textArea rows="4" columns = "128" ng-change="validate()"  ng-model="newResource.description"> </textArea>
+  </p>
+  <p>
+  <input type="submit" value="Submit">
   </p>
   <p ng-show="!isValidInput" ng-repeat="errorMessage in errorMessages" style="color:red"> {{ errorMessage }} </p>
 </form>

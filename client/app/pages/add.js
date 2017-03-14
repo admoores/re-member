@@ -34,6 +34,7 @@ angular.module('remember.add', [])
   }
 
   $scope.addResource = function() {
+    console.log('Submitted!!!');
     Add.addNew($scope.newResource);
   }
 
