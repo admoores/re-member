@@ -12,7 +12,7 @@
   Search: <input type="text" ng-model="searchField"/>
   </br></br></br>
   <div class="resourceDiv" ng-repeat="resource in data.resources | filter: searchField" ng-show="hasResources() && filter[findCategoryById(resource.categoryId)]">
-    <a href="{{ resource.link }}">{{ resource.title }}</a>
+    <a href="{{ resource.link }}" target="_blank">{{ resource.title }}</a>
     <p> Description: {{ resource.description }} </p>
     <p> Category: {{findCategoryById(resource.categoryId)}} </p>
   </div>
