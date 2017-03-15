@@ -154,6 +154,7 @@ app.post('/api/auth', function(req, res) {
     res.json({token: token});
     res.end();
   }).catch(function(e) {
+    console.log(e);
     res.status(500);
     res.end();
   });
