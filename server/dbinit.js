@@ -4,7 +4,7 @@ var sequelize = new Sequelize('remember', 'root', '4vxjvEo7t##UXVcm', {dialect: 
 
 var Category = sequelize.define('category', {
   id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
-  name: type: Sequelize.STRING,
+  name: Sequelize.STRING,
   userId: Sequelize.INTEGER
 }, {timestamps: false, freezeTableName: true, tableName: 'categories'});
 
