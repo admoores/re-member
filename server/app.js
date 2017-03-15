@@ -140,7 +140,7 @@ app.post('/api/auth', function(req, res) {
     } else {
       var auth = bcrypt.compareSync(user.password, currentUser.hash);
       console.log('AUTHENTICATED:', auth);
-      return new Promise(function(reslove, reject) {
+      return new Promise(function(resolve, reject) {
         if (auth) {
           resolve(currentUser);
         } else {
