@@ -3,3 +3,8 @@ div .resourceDiv {
   margin: 5px;
   padding: 10px;
 }
+
+#mainTitle {
+  color: DarkGrey;
+  font-family: "Georgia", serif;
+}
