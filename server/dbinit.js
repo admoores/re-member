@@ -4,15 +4,15 @@ var sequelize = new Sequelize('remember', 'root', '4vxjvEo7t##UXVcm', {dialect: 
 
 var Category = sequelize.define('category', {
   id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
-  name: {type: Sequelize.STRING, unique: true},
+  name: type: Sequelize.STRING,
   userId: Sequelize.INTEGER
 }, {timestamps: false, freezeTableName: true, tableName: 'categories'});
 
 var Resource = sequelize.define('resource', {
   id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, unique: true},
-  title: {type: Sequelize.STRING},
-  link: {type: Sequelize.STRING},
-  description: {type: Sequelize.STRING},
+  title: Sequelize.STRING,
+  link: Sequelize.STRING,
+  description: Sequelize.STRING,
   categoryId: Sequelize.INTEGER,
   userId: Sequelize.INTEGER
 }, {timestamps: true, freezeTableName: true, tableName: 'resources'});
