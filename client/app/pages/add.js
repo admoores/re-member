@@ -34,7 +34,6 @@ angular.module('remember.add', [])
   };
 
   $scope.addResource = function() {
-    console.log('Submitted!!!');
     Add.addNew($scope.newResource);
     $scope.newResource = {
       title: '',
@@ -45,14 +44,53 @@ angular.module('remember.add', [])
   };
 
   $scope.addDummyResources = function() {
-    var obj1 = {title: 'Google', category: 'stuff', link: 'http://www.google.com', description: 'This page has stuff'};
-    var obj2 = {title: 'Facebook', category: 'otherstuff', link: 'http://www.facebook.com', description: 'This page has friends'};
-    var obj3 = {title: 'Youtube', category: 'funstuff', link: 'http://www.youtube.com', description: 'This page has videos'};
-    var obj4 = {title: 'Bing', category: 'uselessstuff', link: 'http://www.bing.com', description: 'This page has useless stuff'};
-    Add.addNew(obj1);
-    Add.addNew(obj2);
-    Add.addNew(obj3);
-    Add.addNew(obj4);
+    var veritasium = {
+      title: 'Veritasium: Gravitational Waves',
+      category: 'science',
+      link: 'https://www.youtube.com/watch?v=iphcyNWFD10',
+      description: 'Awesome video about Gravitational Waves and how they were detected'
+    };
+    var computerphile = {
+      title: 'Computerphile: Stop Button Problem',
+      category: 'science',
+      link: 'https://www.youtube.com/watch?v=3TYT1QfdfsM',
+      description: 'Video about developing AI with an off switch. The idea is that it\'s still unknown how to best make an AI want to improve, but also not resist being reset'
+    };
+    var elk = {
+      title: 'Ambidextrous Elk',
+      category: 'science',
+      link: 'http://edmontonjournal.com/news/local-news/ambidextrous-elk-linked-to-bolder-personalities-less-migration-u-of-a-study',
+      description: 'Article about how elk without a preference for right or left hoof exhibit vastly different personality traits'
+    };
+    var nodehttp = {
+      title: 'Anatomy of an HTTP request',
+      category: 'javascript',
+      link: 'https://nodejs.org/en/docs/guides/anatomy-of-an-http-transaction/',
+      description: 'Walkthrough/tutorial of the properties and behaviour of an http request in node'
+    };
+    var promises = {
+      title: 'Promises Introduction',
+      category: 'javascript',
+      link: 'https://developers.google.com/web/fundamentals/getting-started/primers/promises',
+      description: 'Introduction and tutorial on Promises in JS'
+    };
+    var radSong = {
+      title: 'LUMBERJVCK ft. Kat Nestel - LITM (VNDL Remix)',
+      category: 'music',
+      link: 'https://www.youtube.com/watch?v=HAqXsO41E84',
+      description: 'Future bass track with great vocals'
+    }
+
+    Add.addNew(veritasium).then(function() {
+      Add.addNew(computerphile);
+      Add.addNew(elk);
+    });
+    Add.addNew(nodehttp).then(function() {
+      Add.addNew(promises);
+    });
+    Add.addNew(radSong);
+
+
   };
 
   $scope.validate();
