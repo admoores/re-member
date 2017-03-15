@@ -31,7 +31,7 @@ app.get('/api/resources', function(req, res) {
         res.status(401);
         res.end();
       } else {
-        userId = user.id;
+        userId = currentUser.id;
         var fullList = {};
         var getCategories = db.Category.findAll({where: {userId: userId}}).then(function(categoryList) {
           fullList.categories = categoryList;
