@@ -29,29 +29,21 @@ app.get('/api/resources', function(req, res) {
     db.User.find({where: {name: user.name}}).then(function(currentUser) {
       if (!currentUser) {
         res.status(401);
-        res.end('User not found');
+        res.end();
       } else {
-        userId = currentUser.id;
-      }
-    }).then(function() {
-      db.User.find({where: {name: user.name}}).then(function(currentUser) {
-        if (!currentUser) {
-          res.status(401);
+        userId = user.id;
+        var fullList = {};
+        var getCategories = db.Category.findAll({where: {userId: userId}}).then(function(categoryList) {
+          fullList.categories = categoryList;
+        });
+        var getResources = db.Resource.findAll({where: {userId: userId}}).then(function(resourceList) {
+          fullList.resources = resourceList;
+        });
+        Promise.all([getCategories, getResources]).then(function() {
+          res.json(fullList);
           res.end();
-        } else {
-          var fullList = {};
-          var getCategories = db.Category.findAll({where: {userId: userId}}).then(function(categoryList) {
-            fullList.categories = categoryList;
-          });
-          var getResources = db.Resource.findAll({where: {userId: userId}}).then(function(resourceList) {
-            fullList.resources = resourceList;
-          });
-          Promise.all([getCategories, getResources]).then(function() {
-            res.json(fullList);
-            res.end();
-          });
-        }
-      });
+        });
+      }
     });
   });
 });
@@ -103,7 +95,7 @@ app.post('/api/resources', function(req, res) {
         userId = currentUser.id;
       }
     }).then(function() {
-      db.Category.find({where: {name: req.body.category}}).then(function(currentCategory) {
+      db.Category.find({where: {name: req.body.category, userId: userId}}).then(function(currentCategory) {
         if (currentCategory === null) {
           return db.Category.create({name: req.body.category, userId: userId});
         } else {
